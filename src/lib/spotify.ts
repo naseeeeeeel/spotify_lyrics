@@ -114,7 +114,7 @@ export function handleRedirect(): Promise<boolean> {
     const error = params.get('error')
     if (!code && !error) return false
 
-    window.history.replaceState({}, '', '/')
+    window.history.replaceState({}, '', REDIRECT_URI)
     if (error) throw new Error(error === 'access_denied' ? 'Spotify access was denied.' : error)
 
     const res = await fetch(TOKEN_URL, {
